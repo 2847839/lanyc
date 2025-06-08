@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesfaye精选 - 商品详情</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Tesfaye设备指南</div>
+        <nav>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="product.html" class="nav-link active">商品详情</a>
+            <a href="collection.html" class="nav-link">收藏系列</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="product-container">
+            <div class="product-header">
+                <h1 class="product-name">R A Z E R VIPER mini SE</h1>
+                <div class="product-price">¥2999</div>
+                <div class="product-rating">★★★★★★★★</div>
+            </div>
+
+            <div class="product-gallery">
+                <div class="main-image-container">
+                    <img src="图片\VIPER介绍1.jpg" alt="VIPER正面" class="main-image" id="mainImage">
+                </div>
+                <div class="thumbnail-container">
+                    <img src="图片\VIPER介绍1.jpg" alt="介绍1" class="thumbnail selected" data-src="图片\VIPER介绍1.jpg">
+                    <img src="图片\VIPER介绍2.jpg" alt="介绍2" class="thumbnail" data-src="图片\VIPER介绍2.jpg">
+                    <img src="图片\VIPER介绍3.jpg" alt="介绍3" class="thumbnail" data-src="图片\VIPER介绍3.jpg">
+                </div>
+            </div>
+
+            <div class="product-details">
+                <div class="product-desc">
+                    <p>在追求极致操作体验的游戏世界里，外设的选择至关重要。Viper Mini SE 游戏鼠标，以精准性能、舒适握持与个性化设计，成为游戏玩家的得力伙伴，专为释放游戏潜能而生。</p>
+                </div>
+
+                <div class="product-spec">
+                    <div class="spec-item">
+                        <span>颜色:</span>
+                        <div class="color-options">
+                            <div class="color-option selected" data-color="gray"></div>
+                            <div class="color-option" data-color="black"></div>
+                            <div class="color-option" data-color="white"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn add-to-cart">加入购物车</button>
+                    <button class="btn buy-now">立即购买</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-description">
+            <h2 class="description-title">产品详情</h2>
+            <div class="description-content">
+                <p>重量只有 49 克，在确保毒蝰迷你 SIGNATURE EDITION 强大性能的同时，通过对外壳材质的精心挑选，设计方案的不断优化，我们再次树立了无线游戏鼠标轻量化标杆。</p>
+                <p>镁合金外骨架，经过多种材料的不断测试，我们挑选了可以提供合适重量与强度的镁合金作为毒蝰迷你 SIGNATURE EDITION 的外壳。CNC 金属一体成型，其独特的表面涂层为玩家提供独具一格的细腻手感。</p>
+                <div class="feature-list">
+                    <ul>
+                        <li>轻量化的全新标杆</li>
+                        <li>镁合金外骨架</li>
+                        <li>HYPERPOLLING无线技术</li>
+                        <li>FOCUS PRO 30K精确追踪</li>
+                        <li>HYPERSPEED WIRELESS低延迟无线技术</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Tesfaye</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const mainImage = document.getElementById('mainImage');
+            
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function() {
+                    thumbnails.forEach(t => t.classList.remove('selected'));
+                    this.classList.add('selected');
+                    mainImage.src = this.getAttribute('data-src');
+                    mainImage.style.opacity = '0.5';
+                    setTimeout(() => {
+                        mainImage.style.opacity = '1';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

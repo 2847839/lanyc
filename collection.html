@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesfaye精选 - 收藏系列</title>
+    <link rel="stylesheet" href="collection.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Tesfaye设备指南</div>
+        <nav>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="product.html" class="nav-link">商品详情</a>
+            <a href="collection.html" class="nav-link active">收藏系列</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="collection-banner">
+            <h1 class="banner-title">Tesfaye精选收藏</h1>
+            <p class="banner-desc">每一件都是工艺的极致，为你的游戏提供惬意的享受</p>
+        </section>
+
+        <section class="collection-filter">
+            <h3 class="filter-title">筛选条件</h3>
+            <div class="filter-options">
+                <div class="filter-category">
+                    <span>分类:</span>
+                    <select class="category-select">
+                        <option value="all">全部</option>
+                        <option value="home">键盘</option>
+                        <option value="stationery">鼠标</option>
+                        <option value="digital">显示器</option>
+                    </select>
+                </div>
+                <div class="filter-price">
+                    <span>价格:</span>
+                    <select class="price-select">
+                        <option value="all">全部价格</option>
+                        <option value="0-200">¥1000-¥1500</option>
+                        <option value="200-500">¥1500-¥2000</option>
+                        <option value="500+">¥2000以上</option>
+                    </select>
+                </div>
+                <button class="filter-apply">应用筛选</button>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">精选收藏</h2>
+            <div class="collection-grid">
+                <div class="collection-item" data-category="home" data-price="350">
+                    <div class="item-img-container">
+                        <img src="图片\melgeek.jpg" alt="melgeek" class="item-img">
+                        <div class="item-overlay">
+                            <button class="btn">加入收藏</button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-title">Melgeek Made68 Ultra</h3>
+                        <div class="item-price">¥1499</div>
+                    </div>
+                </div>
+                <div class="collection-item" data-category="stationery" data-price="120">
+                    <div class="item-img-container">
+                        <img src="图片\ZOWIE.jpg" alt="ZOWIE" class="item-img">
+                        <div class="item-overlay">
+                            <button class="btn">加入收藏</button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-title">ZOWIE GEAR XL2586X+</h3>
+                        <div class="item-price">¥8699</div>
+                    </div>
+                </div>
+                <div class="collection-item" data-category="digital" data-price="450">
+                    <div class="item-img-container">
+                        <img src="图片\VIPER介绍1.jpg" alt="VIPER" class="item-img">
+                        <div class="item-overlay">
+                            <button class="btn">加入收藏</button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-title">RAZER VIPER Mini SE</h3>
+                        <div class="item-price">¥2899</div>
+                    </div>
+                </div>
+                <div class="collection-item" data-category="home" data-price="280">
+                    <div class="item-img-container">
+                        <img src="图片\SONY.jpg" alt="SONY" class="item-img">
+                        <div class="item-overlay">
+                            <button class="btn">加入收藏</button>
+                        </div>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-title">SONY INZONE H9</h3>
+                        <div class="item-price">¥1489</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Tesfaye</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const applyFilterBtn = document.querySelector('.filter-apply');
+            const collectionItems = document.querySelectorAll('.collection-item');
+            
+            applyFilterBtn.addEventListener('click', function() {
+                const categorySelect = document.querySelector('.category-select');
+                const priceSelect = document.querySelector('.price-select');
+                const selectedCategory = categorySelect.value;
+                const selectedPrice = priceSelect.value;
+                
+                collectionItems.forEach((item, index) => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        const itemCategory = item.getAttribute('data-category');
+                        const itemPrice = parseInt(item.getAttribute('data-price'));
+                        
+                        let showItem = true;
+                        
+                        if (selectedCategory !== 'all' && itemCategory !== selectedCategory) {
+                            showItem = false;
+                        }
+                        
+                        if (showItem) {
+                            if (selectedPrice === '0-200' && itemPrice > 200) {
+                                showItem = false;
+                            } else if (selectedPrice === '200-500' && (itemPrice < 200 || itemPrice > 500)) {
+                                showItem = false;
+                            } else if (selectedPrice === '500+' && itemPrice < 500) {
+                                showItem = false;
+                            }
+                        }
+                        
+                        item.style.display = showItem ? 'block' : 'none';
+                        
+                        if (showItem) {
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        }
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
